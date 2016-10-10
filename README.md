@@ -36,3 +36,5 @@ if( Y的估价值小于CLOSE表的估价值 )
 }//end for
 }//end while
 }//end func
+
+there're some problems with the behavior of the OPEN list in my codes. But it generates the right answer.
