@@ -9,7 +9,6 @@ int main(void)
         { 4, 'A', 'H', 0}, { 2, 'G', 'H', 0}, { 4, 'F', 'G', 0}, { 3, 'D', 'F', 0},
         { 5, 'B', 'H', 0}, { 3, 'C', 'G', 0}, { 8, 'D', 'G', 0}
     };
-
     struct Node NodeArr[NodeNum] =
     {
         { 'A', 15, 0, 0 }, { 'B', 14, 0, 0 }, { 'C', 10, 0, 0 }, { 'D', 2, 0, 0 }, { 'E', 2, 0, 0 },
@@ -41,11 +40,11 @@ int main(void)
     {
         n->name = OPEN[0].name, n->FN = OPEN[0].FN,
            n->GN = OPEN[0].GN,n->HN = OPEN[0].HN; // pointer assignment
-        ResPath[i++] = n->name;
-        printf( "n = %c, fn = %d, gn = %d, hn = %d\n", n->name, n->FN, n->GN, n->HN );
+        ResPath[i++] = n->name; // store the nodes
+        printf( "\nn = %c, fn = %d, gn = %d, hn = %d\n", n->name, n->FN, n->GN, n->HN );
         if ( n->name == 'E')
         {
-            printf ( "\n");
+            printf( "\n");
             printf ( "The result path:\n");
             for ( i = 0; ResPath[i] != 0; i++ )
                 printf ( "%c ", ResPath[i]);
@@ -55,7 +54,7 @@ int main(void)
         else                          // REMOVE(n, OPEN), ADD(n,CLOSED)
         {
             // calculate the value
-            n->GN = 0,n->FN = n->GN + n->HN;
+            //n->GN = 0,n->FN = n->GN + n->HN;
             // 对于n的每个子节点
             if ( ReFromOpen( *n, OPEN ) )
                 ;
@@ -66,7 +65,7 @@ int main(void)
             else
                 printf ("Error!\n");
             if ( PutIntoClosed( *n, CLOSED ) )
-                ;
+                ; 
             else
                 printf( "Error!\n");
             if ( SortNodes ( OPEN ) )
